@@ -374,3 +374,20 @@ describe('verifyObservation (spec §18 step 2)', () => {
     expect(await verifyObservation(tampered)).toBe(false);
   });
 });
+
+
+describe('SIP-01 v1.3 capability references', () => {
+  it('emits validated role, repeatable proto tags and the kind-39698 a pointer', async () => {
+    const event = await buildIndexEvent({
+      url: 'https://example.com/mcp',
+      title: 'Example tool',
+      role: 'tool',
+      proto: ['mcp', 'http'],
+      capabilityAddress: '39698:' + 'a'.repeat(64) + ':example-tool',
+    });
+    expect(event?.tags).toContainEqual(['role', 'tool']);
+    expect(event?.tags).toContainEqual(['proto', 'mcp']);
+    expect(event?.tags).toContainEqual(['proto', 'http']);
+    expect(event?.tags).toContainEqual(['a', '39698:' + 'a'.repeat(64) + ':example-tool']);
+  });
+});
