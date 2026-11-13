@@ -1,6 +1,7 @@
 /**
- * Search Index Protocol (SIP-01) v1.2 — reference implementation.
- * (v1.2 = NIP-reference audit only; the wire format is unchanged from v1.)
+ * Search Index Protocol (SIP-01) v1.3 — reference implementation.
+ * (v1.2 audited NIP references; v1.3 adds optional role/proto tags and a
+ * kind-39698 capability pointer. Kind 39697 and wire schema v=1 are unchanged.)
  * Canonical spec: https://github.com/NostrDanish/SIP-01 (local copy: docs/SIP-01.md)
  *
  * One addressable event (kind 39697) per indexed web document:
