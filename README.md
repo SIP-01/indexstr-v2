@@ -226,10 +226,10 @@ Indexstr publishes **SIP-01 (Search Index Protocol)** events — the same protoc
   "created_at": 1786250000,
   "content": "{\"title\":\"Example Page\",\"description\":\"A page about...\"}",
   "tags": [
-    ["d", "widx:9f86d081884c7d659a2feaa0c55ad015"],
+    ["d", "widx:3641c5f2274c5471278ab5bf1df6d185"],
     ["u", "https://example.com/page"],
     ["l", "en"],
-    ["x", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"],
+    ["x", "13c3940b2829e9397d43d54f0145c6b3f792ebbe13674ac6e5de1b354a1b3e7a"],
     ["v", "1"],
     ["source", "indexstr/v2"],
     ["network", "clearnet"],
@@ -251,7 +251,13 @@ Indexstr publishes **SIP-01 (Search Index Protocol)** events — the same protoc
 | `type` | Extension registry — `repository` for GitHub/GitLab, else `page` |
 | `alt` | Human-readable description (the `alt` convention, spec §12.3) |
 
-Full schema documentation: [NIP.md](NIP.md) · Canonical spec: [SIP-01 v1.2](https://github.com/NostrDanish/SIP-01/blob/main/public/spec/SIP-01.md)
+Full schema documentation: [NIP.md](NIP.md) · Canonical spec: [SIP-01 v1.3](https://github.com/NostrDanish/SIP-01/blob/main/public/spec/SIP-01.md)
+
+The vendored kind-39697 builder also accepts the optional v1.3 `role` and
+repeatable `proto` hints, plus an optional `a` pointer to a kind-39698
+capability listing. This v2 app does not publish kind-39698 announcements,
+and ordinary page observations omit these hints. The observation's `v` remains
+`"1"`; the heartbeat's node version is a separate schema.
 
 ### Relay Pool
 

@@ -71,14 +71,14 @@ Consumers treat heartbeats older than **1 hour** as offline.
   "tags": [
     ["v", "2"],
     ["shard", "C4"],
-    ["source", "indexstr/1"],
+    ["source", "indexstr/v2"],
     ["alt", "Indexstr node heartbeat: shard C4"]
   ]
 }
 ```
 
 **Tags:** `v` (node protocol version), `shard` (home shard, two uppercase hex
-chars), `source` (`indexstr/1`), `alt` (NIP-31 human-readable).
+chars), `source` (`indexstr/v2`), `alt` (NIP-31 human-readable).
 
 **Content** (JSON): `v`, `shard`, coarse `platform` (`mobile`/`desktop`),
 coarse `network` class, `charging`, and self-reported `stats`
@@ -116,11 +116,11 @@ public metadata."*
   "created_at": 1786250000,
   "content": "{\"title\":\"Example Page\",\"description\":\"A page about...\",\"image\":\"https://example.com/og.jpg\"}",
   "tags": [
-    ["d", "widx:9f86d081884c7d659a2feaa0c55ad015"],
+    ["d", "widx:3641c5f2274c5471278ab5bf1df6d185"],
     ["u", "https://example.com/page"],
     ["l", "en"],
-    ["x", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"],
-    ["v", "2"],
+    ["x", "13c3940b2829e9397d43d54f0145c6b3f792ebbe13674ac6e5de1b354a1b3e7a"],
+    ["v", "1"],
     ["published", "1786200000"],
     ["source", "indexstr/1"],
     ["network", "clearnet"],
@@ -142,7 +142,7 @@ public metadata."*
 | `l` | – | ISO 639-1 language code (validated two-letter shape) |
 | `t` | – | 0–8 lowercase topic tags matching `^[a-z0-9][a-z0-9-]{0,99}$` |
 | `published` | – | Unix seconds — page's claimed publication time (§12.2) |
-| `source` | – | `"indexstr/1"` — identifies this software (≤ 100 chars) |
+| `source` | – | `"indexstr/v2"` — identifies this software (≤ 100 chars) |
 
 **Extension tags (spec §9.2 registry):**
 
@@ -151,6 +151,14 @@ public metadata."*
 | `network` | always `clearnet` | A browser crawler can only reach the clearnet |
 | `type` | `page` / `article` / `blog` / `news` / `docs` / `wiki` / `forum` / `repository` / `product` / `video` / `audio` / `homepage` | Derived document type (see Enrichment) |
 | `platform` | e.g. `github`, `youtube`, `wikipedia` | Emitted for well-known hosts only |
+
+## Optional v1.3 capability hints
+
+The vendored web-index builder accepts optional `role`, repeatable `proto`,
+and an optional NIP-01 `a` pointer to kind 39698. This Indexstr v2
+application does not publish kind-39698 capability announcements; normal
+page observations omit the hints. Kind-39697 `v` stays `"1"`; the separate
+kind-16919 heartbeat version is an Indexstr-node version.
 
 ## Enrichment (derived `t` topics + `type`)
 
@@ -277,7 +285,7 @@ Any SIP-01 compatible search engine can read Indexstr's observations:
 ```json
 {
   "kinds": [39697],
-  "#d": ["widx:9f86d081884c7d659a2feaa0c55ad015"]
+  "#d": ["widx:3641c5f2274c5471278ab5bf1df6d185"]
 }
 ```
 
@@ -321,8 +329,8 @@ nothing, and the node loses no work.
 
 ## References
 
-- **Canonical spec (v1.2):** [NostrDanish/SIP-01](https://github.com/NostrDanish/SIP-01) — `public/spec/SIP-01.md`
-  (v1.2 was a NIP-reference audit; the wire format is unchanged and `v` stays `"1"`)
+- **Canonical spec (v1.3):** [NostrDanish/SIP-01](https://github.com/NostrDanish/SIP-01) — `public/spec/SIP-01.md`
+  (v1.2 audited NIP references; v1.3 adds optional `role`/`proto` hints and a companion capability pointer; kind-39697 schema `v` remains `"1"`)
 - **Implementation guide:** [SIP-01/docs/IMPLEMENTATION-GUIDE.md](https://github.com/NostrDanish/SIP-01/blob/main/docs/IMPLEMENTATION-GUIDE.md)
 - **Reference port:** [SIP-01/src/lib/sip01-utils.ts](https://github.com/NostrDanish/SIP-01/blob/main/src/lib/sip01-utils.ts)
 - **0xSearchstr NIP.md:** [legacy schemas, community submissions, Nostra interop](https://github.com/NostrDanish/0xSearchstr/blob/main/NIP.md)
