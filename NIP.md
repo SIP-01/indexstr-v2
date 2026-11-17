@@ -71,7 +71,7 @@ Consumers treat heartbeats older than **1 hour** as offline.
   "tags": [
     ["v", "2"],
     ["shard", "C4"],
-    ["source", "indexstr/1"],
+    ["source", "indexstr/v2"],
     ["alt", "Indexstr node heartbeat: shard C4"]
   ]
 }
@@ -142,7 +142,7 @@ public metadata."*
 | `l` | – | ISO 639-1 language code (validated two-letter shape) |
 | `t` | – | 0–8 lowercase topic tags matching `^[a-z0-9][a-z0-9-]{0,99}$` |
 | `published` | – | Unix seconds — page's claimed publication time (§12.2) |
-| `source` | – | `"indexstr/1"` — identifies this software (≤ 100 chars) |
+| `source` | – | `"indexstr/v2"` — identifies this software (≤ 100 chars) |
 
 **Extension tags (spec §9.2 registry):**
 
@@ -285,7 +285,7 @@ Any SIP-01 compatible search engine can read Indexstr's observations:
 ```json
 {
   "kinds": [39697],
-  "#d": ["widx:9f86d081884c7d659a2feaa0c55ad015"]
+  "#d": ["widx:3641c5f2274c5471278ab5bf1df6d185"]
 }
 ```
 
