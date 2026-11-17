@@ -253,6 +253,12 @@ Indexstr publishes **SIP-01 (Search Index Protocol)** events — the same protoc
 
 Full schema documentation: [NIP.md](NIP.md) · Canonical spec: [SIP-01 v1.3](https://github.com/NostrDanish/SIP-01/blob/main/public/spec/SIP-01.md)
 
+The vendored kind-39697 builder also accepts the optional v1.3 `role` and
+repeatable `proto` hints, plus an optional `a` pointer to a kind-39698
+capability listing. This v2 app does not publish kind-39698 announcements,
+and ordinary page observations omit these hints. The observation's `v` remains
+`"1"`; the heartbeat's node version is a separate schema.
+
 ### Relay Pool
 
 Observations and heartbeats are pushed to every relay in the publish set — SIP-01 index relays first, then NIP-50 search relays, then broad-propagation relays:
