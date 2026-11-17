@@ -78,7 +78,7 @@ Consumers treat heartbeats older than **1 hour** as offline.
 ```
 
 **Tags:** `v` (node protocol version), `shard` (home shard, two uppercase hex
-chars), `source` (`indexstr/1`), `alt` (NIP-31 human-readable).
+chars), `source` (`indexstr/v2`), `alt` (NIP-31 human-readable).
 
 **Content** (JSON): `v`, `shard`, coarse `platform` (`mobile`/`desktop`),
 coarse `network` class, `charging`, and self-reported `stats`
